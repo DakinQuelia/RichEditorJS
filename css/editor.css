@@ -5,10 +5,8 @@
 *****************************************/
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css");
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,300');
-@import url('./__vars.css');
+@import url('./_vars.css');
 @import url('./modal.css');
-
-
 
 /**
 *	Global
@@ -312,6 +310,7 @@
     background-color: #fff;
     font-size: 1em;
     box-shadow: 0 0px 1px rgba(0,0,0,.3);
+	opacity: 1;
 }
 
 #tooltip p.header {
@@ -326,6 +325,7 @@
 
 #tooltip p {
     padding: 7px;
+	margin: 0;
 }
 
 [data-title]:hover:before {
