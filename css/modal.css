@@ -208,6 +208,15 @@
     width: 150px !important;
 }
 
+.modal-content form .inline {
+    display: flex;
+    width: 100%;
+}
+
+.modal-content form .inline label {
+    width: 30%;
+}
+
 .modal-content form fieldset { 
     margin: 0;
     padding: 0;
