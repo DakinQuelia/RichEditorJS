@@ -28,7 +28,7 @@ class Modal
             // On sélectionne tous les boutons/liens qui ont la classe .jsmodal
             document.querySelectorAll(".jsmodal").forEach(a => 
             {
-                a.addEventListener('click', () => this.OpenModal);
+                a.addEventListener('click', (event) => this.OpenModal(event));
             });
                     
             // On gère la gestion du clavier
