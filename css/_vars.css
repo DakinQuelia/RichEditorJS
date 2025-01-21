@@ -1,0 +1,51 @@
+/*****************************************
+*	Style - _vars.css
+*	Auteur 		: Dakin Quelia
+*	Version 	: 1.0.0. 
+*****************************************/
+:root {
+    /* Polices */
+    --fontawesome: "Font Awesome 5 Free";
+    /* Couleurs */
+    --blue: #007bff;
+    --blue-hover: #0057a9;
+    --turquoise: #00c0d9;
+    --turquoise-hover: #0090a9;
+    --turquoise-active: #20b4e1;
+    --indigo: #6610f2;
+    --indigo-hover: #5700a9;
+    --purple: #6f42c1;
+    --pink: #e83e8c;
+    --pink-hover: #a90068;
+    --red: #dc3545;
+    --red-hover:#a90000;
+    --orange: #fd7e14;
+    --orange-hover: #a94c00;
+    --yellow: #ffc107;
+    --yellow-hover: #a99800;
+    --green: #28a745;
+    --green-hover: #327c00;
+    --teal: #20c997;
+    --teal-hover: #00a971;
+    --cyan: #17a2b8;
+    --cyan-hover: #176d7c;
+    --white: #fff;
+    --gray: #6c757d;
+    --gray-hover: #42494b;
+    --gray-dark: #343a40;
+    --primary: #007bff;
+    --secondary: #6c757d;
+    --success: #28a745;
+    --info: #17a2b8;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --light: #f8f9fa;
+    --dark: #343a40; 
+    /* Boîte d'erreur */
+    --error-size: 50%;
+    --error-color-danger: #FF0000;
+    --error-color-success: #058a00;
+    --error-color-warning: #ff9100;
+    --error-icon-warning: "\f071";
+    --error-icon-success: "\f00c";
+}

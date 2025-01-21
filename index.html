@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editeur de Texte</title>
+    <!--  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    
+    <link rel="stylesheet" href="css/editor.css" />
+</head>
+<body>
+    <div class="container">
+        <header class="blog-header py-3"> </header>
+    </div>
+   
+    <main class="container mt-10">
+        <div class="editor-content"></div>
+        <div id="modals">
+            <div id="editorabout" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display:none">
+                <div class="modal-wrapper" id="modalstop">
+                    <div class="modal-header">
+                        <button class="modal-button close" id="close"><i class="fas fa-times"></i></button>
+                        <span class="modal-title" id="titlemodal">A propos</span>
+                    </div>
+                    <div class="modal-content">
+                        <p>Cette application a été développée par Dakin Quelia.</p>  
+                    </div>
+                    <div class="modal-footer">
+                        <div class="left">v1.0.0</div> 
+                        <div class="right"><button class="modal-button" type="button" id="btnclose">Fermer</button></div> 
+                    </div>
+                </div>
+            </div>
+            <div id="linkpop" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display:none">
+                <div class="modal-wrapper" id="modalstop">
+                    <div class="modal-header">
+                        <button class="modal-button close" id="close"><i class="fas fa-times"></i></button>
+                        <span class="modal-title" id="titlemodal">Ajouter un lien</span>
+                    </div>
+                    <form method="post" id="createlink">
+                        <div class="modal-content">
+                            <div id="mytest">
+                                <div class="form">
+                                    <div class="row">
+                                        <div class="input-group">
+                                            <div class="prepend">
+                                                <div class="text"><i class="fas fa-paragraph"></i></div>
+                                            </div>
+                                            <input type="text" class="form-control" id="linkname" name="linkname" placeholder="Votre texte" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-group">
+                                            <div class="prepend">
+                                                <div class="text"><i class="fas fa-link"></i></div>
+                                            </div>
+                                            <input type="text" class="form-control" id="linkurl" name="linkurl" placeholder="L'adresse de votre lien" />  
+                                        </div>
+                                        <span class="form-invalid" id="errorurl" style="display: none">Vous devez indiquer une URL.</span>
+                                    </div>
+                                    <div class="row">
+                                        <input type="checkbox" class="form-control" id="linktab" name="linktab" /> <label for="linktab">Nouvel onglet</label>
+                                    </div>
+                                </div>     
+                            </div>  
+                        </div>
+                        <div class="modal-footer">
+                            <div class="left"></div> 
+                            <div class="right">
+                                <button class="modal-button" id="btnsubmit" type="button">Envoyer</button>
+                                <button class="modal-button" id="btnclose" type="button">Fermer</button>
+                            </div> 
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div id="textcolor" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display:none">
+                <div class="modal-wrapper" id="modalstop">
+                    <div class="modal-header">
+                        <button class="modal-button close" id="close"><i class="fas fa-times"></i></button>
+                        <span class="modal-title" id="titlemodal">Choisir une couleur de texte</span>
+                    </div>
+                    <form method="post" id="choosecolor">
+                        <div class="modal-content"> 
+                            <div id="picker-color">
+                                <div class="line">
+                                    <span class="picker-color" data-title="#000000" data-color="#000000" style="background-color: #000000"></span>
+                                    <span class="picker-color" data-title="#434343" data-color="#434343" style="background-color: #434343"></span>
+                                    <span class="picker-color" data-title="#666666" data-color="#666666" style="background-color: #666666"></span>
+                                    <span class="picker-color" data-title="#cccccc" data-color="#cccccc" style="background-color: #cccccc"></span>
+                                    <span class="picker-color" data-title="#d9d9d9" data-color="#d9d9d9" style="background-color: #d9d9d9"></span>
+                                    <span class="picker-color" data-title="#ffffff" data-color="#ffffff" style="background-color: #ffffff"></span>
+                                </div>
+                                <div class="line">
+                                    <span class="picker-color" data-title="#980000" data-color="#980000" style="background-color: #980000"></span>
+                                    <span class="picker-color" data-title="#ff0000" data-color="#ff0000" style="background-color: #ff0000"></span>
+                                    <span class="picker-color" data-title="#ff9900" data-color="#ff9900" style="background-color: #ff9900"></span>
+                                    <span class="picker-color" data-title="#ffff00" data-color="#ffff00" style="background-color: #ffff00"></span>
+                                    <span class="picker-color" data-title="#00ff00" data-color="#00ff00" style="background-color: #00ff00"></span>
+                                    <span class="picker-color" data-title="#00ffff" data-color="#00ffff" style="background-color: #00ffff"></span>
+                                    <span class="picker-color" data-title="#4a86e8" data-color="#4a86e8" style="background-color: #4a86e8"></span>
+                                    <span class="picker-color" data-title="#0000ff" data-color="#0000ff" style="background-color: #0000ff"></span>
+                                    <span class="picker-color" data-title="#9900ff" data-color="#9900ff" style="background-color: #9900ff"></span>
+                                    <span class="picker-color" data-title="#ff00ff" data-color="#ff00ff" style="background-color: #ff00ff"></span>
+                                </div>
+                                <div class="line">
+                                    <span class="picker-color" data-title="#e6b8af" data-color="#e6b8af" style="background-color: #e6b8af"></span>
+                                    <span class="picker-color" data-title="" data-color="#f4cccc" style="background-color: #f4cccc"></span>
+                                    <span class="picker-color" data-title="" data-color="#fce5cd" style="background-color: #fce5cd"></span>
+                                    <span class="picker-color" data-title="" data-color="#fff2cc" style="background-color: #fff2cc"></span>
+                                    <span class="picker-color" data-title="" data-color="#d9ead3" style="background-color: #d9ead3"></span>
+                                    <span class="picker-color" data-title="" data-color="#d0e0e3" style="background-color: #d0e0e3"></span>
+                                    <span class="picker-color" data-title="" data-color="#c9daf8" style="background-color: #c9daf8"></span>
+                                    <span class="picker-color" data-title="" data-color="#cfe2f3" style="background-color: #cfe2f3"></span>
+                                    <span class="picker-color" data-title="" data-color="#d9d2e9" style="background-color: #d9d2e9"></span>
+                                    <span class="picker-color" data-title="" data-color="#ead1dc" style="background-color: #ead1dc"></span>
+                                </div>
+                                <div class="line">
+                                    <span class="picker-color" data-title="" data-color="#dd7e6b" style="background-color: #dd7e6b"></span>
+                                    <span class="picker-color" data-title="" data-color="#ea9999" style="background-color: #ea9999"></span>
+                                    <span class="picker-color" data-title="" data-color="#f9cb9c" style="background-color: #f9cb9c"></span>
+                                    <span class="picker-color" data-title="" data-color="#ffe599" style="background-color: #ffe599"></span>
+                                    <span class="picker-color" data-title="" data-color="#b6d7a8" style="background-color: #b6d7a8"></span>
+                                    <span class="picker-color" data-title="" data-color="#a2c4c9" style="background-color: #a2c4c9"></span>
+                                    <span class="picker-color" data-title="" data-color="#a4c2f4" style="background-color: #a4c2f4"></span>
+                                    <span class="picker-color" data-title="" data-color="#9fc5e8" style="background-color: #9fc5e8"></span>
+                                    <span class="picker-color" data-title="" data-color="#b4a7d6" style="background-color: #b4a7d6"></span>
+                                    <span class="picker-color" data-title="" data-color="#d5a6bd" style="background-color: #d5a6bd"></span>
+                                </div>
+                                <div class="line">
+                                    <span class="picker-color" data-title="" data-color="#cc4125" style="background-color: #cc4125"></span>
+                                    <span class="picker-color" data-title="" data-color="#e06666" style="background-color: #e06666"></span>
+                                    <span class="picker-color" data-title="" data-color="#f6b26b" style="background-color: #f6b26b"></span>
+                                    <span class="picker-color" data-title="" data-color="#ffd966" style="background-color: #ffd966"></span>
+                                    <span class="picker-color" data-title="" data-color="#93c47d" style="background-color: #93c47d"></span>
+                                    <span class="picker-color" data-title="" data-color="#76a5af" style="background-color: #76a5af"></span>
+                                    <span class="picker-color" data-title="" data-color="#6d9eeb" style="background-color: #6d9eeb"></span>
+                                    <span class="picker-color" data-title="" data-color="#6fa8dc" style="background-color: #6fa8dc"></span>
+                                    <span class="picker-color" data-title="" data-color="#8e7cc3" style="background-color: #8e7cc3"></span>
+                                    <span class="picker-color" data-title="" data-color="#c27ba0" style="background-color: #c27ba0"></span>
+                                </div>
+                                <div class="line">
+                                    <span class="picker-color" data-title="" data-color="#a61c00" style="background-color: #a61c00"></span>
+                                    <span class="picker-color" data-title="" data-color="#cc0000" style="background-color: #cc0000"></span>
+                                    <span class="picker-color" data-title="" data-color="#e69138" style="background-color: #e69138"></span>
+                                    <span class="picker-color" data-title="" data-color="#f1c232" style="background-color: #f1c232"></span>
+                                    <span class="picker-color" data-title="" data-color="#6aa84f" style="background-color: #6aa84f"></span>
+                                    <span class="picker-color" data-title="" data-color="#45818e" style="background-color: #45818e"></span>
+                                    <span class="picker-color" data-title="" data-color="#3c78d8" style="background-color: #3c78d8"></span>
+                                    <span class="picker-color" data-title="" data-color="#3d85c6" style="background-color: #3d85c6"></span>
+                                    <span class="picker-color" data-title="" data-color="#674ea7" style="background-color: #674ea7"></span>
+                                    <span class="picker-color" data-title="" data-color="#a64d79" style="background-color: #a64d79"></span>
+                                </div>
+                                <div class="line">
+                                    <span class="picker-color" data-title="" data-color="#5b0f00" style="background-color: #5b0f00"></span>
+                                    <span class="picker-color" data-title="" data-color="#660000" style="background-color: #660000"></span>
+                                    <span class="picker-color" data-title="" data-color="#783f04" style="background-color: #783f04"></span>
+                                    <span class="picker-color" data-title="" data-color="#7f6000" style="background-color: #7f6000"></span>
+                                    <span class="picker-color" data-title="" data-color="#274e13" style="background-color: #274e13"></span>
+                                    <span class="picker-color" data-title="" data-color="#0c343d" style="background-color: #0c343d"></span>
+                                    <span class="picker-color" data-title="" data-color="#1c4587" style="background-color: #1c4587"></span>
+                                    <span class="picker-color" data-title="" data-color="#073763" style="background-color: #073763"></span>
+                                    <span class="picker-color" data-title="" data-color="#20124d" style="background-color: #20124d"></span>
+                                    <span class="picker-color" data-title="" data-color="#4c1130" style="background-color: #4c1130"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="left"></div> 
+                            <div class="right">
+                                <button class="modal-button" id="btnsubmit" type="button">Ajouter</button>
+                                <button class="modal-button" id="btnclose" type="button">Fermer</button>
+                            </div> 
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div id="tablepop" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display:none">
+                <div class="modal-wrapper" id="modalstop">
+                    <div class="modal-header">
+                        <button class="modal-button close" id="close"><i class="fas fa-times"></i></button>
+                        <span class="modal-title" id="titlemodal">Ajouter un tableau</span>
+                    </div>
+                    <form method="post" id="createtable">
+                        <div class="modal-content">
+                            <div id="mytest">
+                                <div class="form">
+                                   <div class="row">
+                                       <div class="left">
+                                            <label for="cellspacing">Espaces entre les cellules</label>
+                                       </div>
+                                       <div class="right">
+                                            <span class="help" data-tooltip="Ce champ permet de définir l'espace des cellules." title=""><i class="fas fa-info-circle"></i></span>
+                                            <div class="spinbox">
+                                                <input type="text" class="small" name="cellspacing" id="cellspacing" value="0" />
+                                                <div class="spinner">
+                                                    <span class="spinbox-up"><i class="fas fa-chevron-up"></i></span>
+                                                    <span class="spinbox-down"><i class="fas fa-chevron-down"></i></span>
+                                                </div>
+                                            </div>
+                                       </div>
+                                   </div>
+                                   <div class="row">
+                                        <div class="left">
+                                            <label for="cellpadding">Marges dans les cellules</label>
+                                        </div>
+                                        <div class="right">
+                                            <span class="help" data-tooltip="Ce champ permet de définir les marges intérieures des cellules." title=""><i class="fas fa-info-circle"></i></span>
+                                            <div class="spinbox">
+                                                <input type="text" name="cellpadding" id="cellpadding" value="0" />
+                                                <div class="spinner">
+                                                    <span class="spinbox-up"><i class="fas fa-chevron-up"></i></span>
+                                                    <span class="spinbox-down"><i class="fas fa-chevron-down"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="left">
+                                            <label for="tablewidth">Largeur du tableau</label>
+                                        </div>
+                                        <div class="right">
+                                            <span class="help" data-tooltip="Ce champ permet de définir la largeur du tableau. Ce paramètre est en pixels." title=""><i class="fas fa-info-circle"></i></span>
+                                            <div class="spinbox">
+                                                <input type="text" name="tablewidth" id="tablewidth" value="0" />
+                                                <div class="spinner">
+                                                    <span class="spinbox-up"><i class="fas fa-chevron-up"></i></span>
+                                                    <span class="spinbox-down"><i class="fas fa-chevron-down"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="left">
+                                            <label for="tableborder">Bordure du tableau</label>
+                                        </div>
+                                        <div class="right">
+                                            <span class="help" data-tooltip="Ce champ permet de définir la largeur de la bordure." title=""><i class="fas fa-info-circle"></i></span>
+                                            <div class="spinbox">
+                                                <input type="text" name="tableborder" id="tableborder" value="0" />
+                                                <div class="spinner">
+                                                    <span class="spinbox-up"><i class="fas fa-chevron-up"></i></span>
+                                                    <span class="spinbox-down"><i class="fas fa-chevron-down"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="left">
+                                            <label for="tablelines">Nombre de lignes</label>
+                                        </div>
+                                        <div class="right">
+                                            <span class="help" data-tooltip="Ce champ permet de définir le nombre de lignes que vous souhaitez générer." title=""><i class="fas fa-info-circle"></i></span>
+                                            <div class="spinbox">
+                                                <input type="text" name="tablelines" id="tablelines" value="0" />
+                                                <div class="spinner">
+                                                    <span class="spinbox-up"><i class="fas fa-chevron-up"></i></span>
+                                                    <span class="spinbox-down"><i class="fas fa-chevron-down"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="left">
+                                            <label for="tablecolumns">Nombre de colonnes</label>
+                                        </div>
+                                        <div class="right">
+                                            <span class="help" data-tooltip="Ce champ permet de définir le nombre de colonnes que vous souhaitez générer." title=""><i class="fas fa-info-circle"></i></span>
+                                            <div class="spinbox">
+                                                <input type="text" name="columns" id="tablecolumns" value="0" />
+                                                <div class="spinner">
+                                                    <span class="spinbox-up"><i class="fas fa-chevron-up"></i></span>
+                                                    <span class="spinbox-down"><i class="fas fa-chevron-down"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>     
+                            </div>  
+                        </div>
+                        <div class="modal-footer">
+                            <div class="left"></div> 
+                            <div class="right">
+                                <button class="modal-button" id="btnsubmit" type="button">Envoyer</button>
+                                <button class="modal-button" id="btnreset" type="button">Effacer</button>
+                                <button class="modal-button" id="btnclose" type="button">Fermer</button>
+                            </div> 
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div class="context-menu" id="contextmenu"></div>
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
